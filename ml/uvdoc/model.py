@@ -357,7 +357,9 @@ class UVDocnet(nn.Module):
                 nn.init.xavier_normal_(m.weight, gain=0.2)
 
     def forward(self, x):
-        resnet_head = self.resnet_head(x)
+        x_size = (x.shape[-2], x.shape[-1])
+        resized_x = nn.functional.interpolate(x, (712, 488), mode='bilinear', align_corners=True)
+        resnet_head = self.resnet_head(resized_x)
         resnet_down = self.resnet_down(resnet_head)
         bridge_1 = self.bridge_1(resnet_down)
         bridge_2 = self.bridge_2(resnet_down)
@@ -370,5 +372,12 @@ class UVDocnet(nn.Module):
 
         out_point_positions2D = self.out_point_positions2D(bridge)
         out_point_positions3D = self.out_point_positions3D(bridge)
+        
+        with torch.no_grad():
+            upsampled_grid2d = nn.functional.interpolate(out_point_positions2D,
+                                                         size=x_size,
+                                                         mode='bilinear',
+                                                         align_corners=True)
+            unwarped_img = nn.functional.grid_sample(x, upsampled_grid2d.transpose(1, 2).transpose(2, 3), align_corners=True)
 
-        return out_point_positions2D, out_point_positions3D
+        return unwarped_img
