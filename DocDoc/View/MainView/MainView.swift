@@ -15,10 +15,10 @@ struct MainView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("Hi there")
-                                .monospaced(true)
+                            Text("Добрый день!")
+                                // .monospaced(true)
                                 .foregroundStyle(Color.gray)
-                            Text("DocDoc")
+                            Text("Главная")
                                 .font(Font.system(.largeTitle))
                                 .bold()
                         }
@@ -31,17 +31,63 @@ struct MainView: View {
                     }
                     Rectangle()
                         .foregroundStyle(Color.blue)
-                        .frame(width: 340, height: 150)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .frame(maxWidth: .infinity, maxHeight: 160)
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 5)
+                        .shadow(radius: 5)
+                        .overlay {
+                            VStack {
+                                ZStack {
+                                    Circle()
+                                        .frame(maxWidth: 50, maxHeight: 50)
+                                        .foregroundStyle(Color.white.opacity(0.2))
+                                    Image(systemName: "folder")
+                                        .foregroundStyle(Color(.white))
+                                }
+                                Text("Сканировать")
+                                    .font(.title)
+                                    .foregroundStyle(Color(.white))
+                                    .bold()
+                            }
+                            .onTapGesture {
+                                // Переход на сканер
+                            }
+                        }
+
                     HStack {
                         Rectangle()
-                            .frame(width: 165, height: 120)
+                            .frame(maxWidth: .infinity, maxHeight: 100)
+                            .foregroundStyle(Color.white)
+                            .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color(.stroke)))
                             .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .foregroundStyle(Color.gray)
+                            .shadow(radius: 2)
+                            .overlay {
+                                VStack {
+                                    Image(systemName: "folder")
+                                    Text("Документы")
+                                        .bold()
+                                }
+                                .onTapGesture {
+                                    // Переход на экран документов
+                                }
+                            }
                         Rectangle()
-                            .frame(width: 165, height: 120)
+                            .frame(maxWidth: .infinity, maxHeight: 100)
+                            .foregroundStyle(Color.white)
+                            .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color(.stroke)))
                             .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .foregroundStyle(Color.gray)
+                            .shadow(radius: 2)
+                            .overlay {
+                                VStack {
+                                    Image(systemName: "photo.stack")
+                                    Text("Галерея")
+                                        .bold()
+                                }
+                                .onTapGesture {
+                                    // Переход на экран галереи
+                                }
+                            }
                     }
 
                     HStack {
