@@ -1,0 +1,24 @@
+included:
+  - DocDoc
+
+excluded:
+  - DocDoc/App/Assets.xcassets
+
+disabled_rules:
+  - trailing_whitespace
+  - trailing_comma
+  - multiple_closures_with_trailing_closure
+
+line_length:
+  warning: 120
+  error: 160
+
+identifier_name:
+  min_length:
+    warning: 2
+
+type_name:
+  min_length:
+    warning: 3
+  max_length:
+    warning: 50

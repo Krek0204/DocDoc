@@ -9,29 +9,28 @@ import Foundation
 import SwiftUI
 
 struct DocumentRowItem: View {
-    
     let document: Document
-    
+
     var body: some View {
         HStack(spacing: 6) {
             Image(systemName: "document")
                 .padding(.leading, 16)
                 .padding(16)
-            
+
             VStack(alignment: .leading) {
                 Text(document.title)
                     .lineLimit(1)
                     .font(Font.system(.title3).bold())
                     .padding(.top, 10)
-                    
+
                 Text("\(document.pagesCount) стр.")
-                    //.monospaced()
+                    // .monospaced()
                     .foregroundStyle(Color(.secondaryLabel))
                     .padding(.bottom, 10)
             }
-            
+
             Spacer()
-            
+
             Button(action: {}) {
                 Image(systemName: "square.and.arrow.up")
                     .padding(.trailing, 16)
@@ -46,11 +45,6 @@ struct DocumentRowItem: View {
         )
         .padding(.horizontal, 16)
         .padding(.vertical, 5)
-    
-    }
-    
-    init(document: Document) {
-        self.document = document
     }
 }
 

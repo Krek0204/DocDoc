@@ -9,10 +9,9 @@ import Foundation
 import SwiftUI
 
 struct DocumentsView: View {
-    
     @State var documents: [Document] = Document.mockDocuments
     @State private var search: String = ""
-    
+
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
@@ -48,7 +47,6 @@ struct DocumentsView: View {
                         .listRowInsets(EdgeInsets())
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color(.clear))
-
                 }
             }
             .listStyle(.plain)
@@ -57,7 +55,6 @@ struct DocumentsView: View {
         .background(Color(.background))
     }
 }
-
 
 #Preview {
     DocumentsView()

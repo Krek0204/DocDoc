@@ -16,7 +16,6 @@ struct Document: Hashable {
 // MARK: - Mock Documents
 
 extension Document {
-
     static var mockDocuments: [Document] {
         return [
             Document(
@@ -58,21 +57,21 @@ extension Document {
                 title: "Приказ №127",
                 pagesCount: 2,
                 image: "doc.text.magnifyingglass"
-            )
+            ),
         ]
     }
-    
+
     static var mockDocument: Document {
         return mockDocuments[0]
     }
-    
+
     static var mockDocumentsWithDifferentTypes: [Document] {
         return [
             Document(title: "Пустой документ", pagesCount: 0, image: "doc"),
             Document(title: "Короткий документ", pagesCount: 1, image: "doc.text"),
             Document(title: "Средний документ", pagesCount: 10, image: "doc.plaintext"),
             Document(title: "Большой документ", pagesCount: 100, image: "doc.plaintext.fill"),
-            Document(title: "Очень большой документ", pagesCount: 500, image: "doc.plaintext.fill")
+            Document(title: "Очень большой документ", pagesCount: 500, image: "doc.plaintext.fill"),
         ]
     }
 }
@@ -82,10 +81,10 @@ extension Document {
 /*
  // Получить список моков:
  let documents = Document.mockDocuments
- 
+
  // Получить один мок:
  let doc = Document.mockDocument
- 
+
  // Получить моки с разным количеством страниц:
  let docs = Document.mockDocumentsWithDifferentTypes
  */

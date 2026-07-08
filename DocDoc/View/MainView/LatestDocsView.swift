@@ -5,13 +5,12 @@
 //  Created by Сергей Мещеряков on 03.07.2026.
 //
 
-import SwiftUI
 import Foundation
+import SwiftUI
 
 struct LatestDocsView: View {
-    
     let documents: [Document]
-    
+
     var body: some View {
         List(documents, id: \.self) { document in
             DocumentRowItem(document: document)
@@ -19,11 +18,10 @@ struct LatestDocsView: View {
                 .listRowInsets(EdgeInsets())
                 .listRowSeparator(.hidden)
         }
-        
+
         .scrollContentBackground(.hidden)
         .listStyle(.plain)
         .listRowSeparator(.hidden)
-        
     }
 }
 
