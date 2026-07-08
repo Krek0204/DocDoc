@@ -1,0 +1,26 @@
+opt_out_usage
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Format Swift files with SwiftFormat"
+  lane :format do
+    sh("cd .. && swiftformat DocDoc --config .swiftformat")
+  end
+
+  desc "Run SwiftLint autocorrect"
+  lane :fix do
+    sh("cd .. && swiftlint --fix --config .swiftlint.yml")
+  end
+
+  desc "Lint Swift files with SwiftLint"
+  lane :lint do
+    sh("cd .. && swiftlint lint --config .swiftlint.yml")
+  end
+
+  desc "Format and lint Swift files"
+  lane :style do
+    sh("cd .. && swiftformat DocDoc --config .swiftformat")
+    sh("cd .. && swiftlint lint --config .swiftlint.yml")
+  end
+end

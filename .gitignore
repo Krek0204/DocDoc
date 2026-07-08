@@ -1,3 +1,11 @@
 /.vscode
 *.DS_Store
 *.pyc
+.DS_Store
+**/.DS_Store
+
+DerivedData/
+.build/
+
+fastlane/report.xml
+fastlane/test_output/
